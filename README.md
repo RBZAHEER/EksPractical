@@ -46,12 +46,33 @@ eksctl create cluster --name zaheer-cluster --region ap-south-1 --nodegroup-name
 - Add user to `aws-auth` ConfigMap:
 
 ```bash
-eksctl create iamidentitymapping \
-  --cluster zaheer-cluster \
-  --region ap-south-1 \
-  --arn arn:aws:iam::<account-id>:user/test-user \
-  --group eks-console-dashboard-full-access-group \
-  --no-duplicate-arns
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:ListFargateProfiles",
+                "eks:DescribeNodegroup",
+                "eks:ListNodegroups",
+                "eks:ListUpdates",
+                "eks:AccessKubernetesApi",
+                "eks:ListAddons",
+                "eks:DescribeCluster",
+                "eks:DescribeAddonVersions",
+                "eks:ListClusters",
+                "eks:ListIdentityProviderConfigs",
+                "iam:ListRoles"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ssm:GetParameter",
+            "Resource": "arn:aws:ssm:*:111122223333:parameter/*"
+        }
+    ]
+}
 ```
 
 - Apply EKS Console access manifest:
