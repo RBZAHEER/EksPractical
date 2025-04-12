@@ -165,5 +165,4 @@ kubectl get svc portfolio-service
 ## 🔗 Follow Me
 
 - 🔗 [LinkedIn – Zaheer Mulani](https://www.linkedin.com/in/defo_notzaheer)
-- 📺 [YouTube – Puneri Gamer](https://www.youtube.com/@PuneriGamer)
 - 💻 [Portfolio](https://zaheerportfoli.netlify.app/)
